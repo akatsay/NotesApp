@@ -1,0 +1,43 @@
+.note-modal-container {
+    max-width: 400px;
+    min-width: 200px;
+    min-height: 250px;
+    width: 60%;
+    position: relative;
+    padding: 0.5rem ;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fourth);
+    border-radius: 10px;
+}
+
+.note-modal-container .title-input {
+    background-color: var(--fifth);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.note-modal-container textarea {
+    border-radius: 10px;
+    min-height: 200px;
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    overflow-y: hidden;
+    border-width: 1px;
+    background-color: var(--third);
+    cursor: text;
+}
+
+#update-button {
+    font-size: 1.5rem;
+    position: absolute;
+    float: right;
+    cursor: pointer;
+    right: 40px;
+    bottom: -10px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: orange;
+}

@@ -7,11 +7,16 @@
     border: 1px solid;
     border-radius: 10px;
     background-color: var(--fourth);
-    
+    cursor: nesw-resize;
+}
+
+.note * {
+    cursor: nesw-resize;
 }
 
 .note .title-input {
     margin-bottom: 1rem;
+    cursor: text;
 }
 
 .note textarea {
@@ -22,6 +27,8 @@
     padding: 10px;
     overflow-y: hidden;
     border-width: 1px;
+    background-color: var(--third);
+    cursor: text;
 }
 
 textarea:focus-within {

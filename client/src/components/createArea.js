@@ -1,18 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 
+import {CreateAreaModal} from "./createAreaModal"
+
 export const CreateArea = ({onAdd, load}) => {
+
+    const [openModal, setOpenModal] = useState(false)
 
     const titleInputRef = useRef(null)
     const contentInputRef = useRef(null)
-
-    useEffect(() => {
-        titleInputRef.current.focus()
-    }, [])
 
     const [note, setNote] = useState({
         title: "",
         content: ""
     })
+
+    useEffect(() => {
+        titleInputRef.current.focus()
+    }, [])
 
     const handleChange = (e) => {
         setNote({...note, [e.target.name] : e.target.value})
@@ -36,35 +40,54 @@ export const CreateArea = ({onAdd, load}) => {
     }
 
     return (
-    <div className="create-area note">
+        <>
+            <div onClick={() => setOpenModal(true)} className="create-area note">
 
-            <input 
-            ref = {titleInputRef}
-            className="title-input title input"
-            name="title"
-            value={note.title}
-            onChange={handleChange}
-            >
+                <input 
+                ref = {titleInputRef}
+                className="title-input title input"
+                name="title"
+                value={note.title}
+                onChange={handleChange}
+                onClick={e => e.stopPropagation()}
+                >
 
-            </input>
+                </input>
 
-            <textarea 
-            className="content-input"
-            id = "createArea-textArea"
-            ref = {contentInputRef}
-            name="content"
-            value={note.content}
-            onChange={handleChange}
-            onKeyUp={expandTextAreaWhenTyping}
-            >
+                <textarea 
+                className="content-input"
+                id = "createArea-textArea"
+                ref = {contentInputRef}
+                name="content"
+                value={note.content}
+                onChange={handleChange}
+                onKeyUp={expandTextAreaWhenTyping}
+                onClick={e => e.stopPropagation()}
+                >
 
-            </textarea>
-            <button 
-            className="fa fa-plus note-action-button" 
-            onClick={submitNote}
-            disabled = { load ? true : false}>
-            </button>
+                </textarea>
+                <button 
+                className="fa fa-plus note-action-button" 
+                onClick={submitNote}
+                disabled = { load ? true : false}>
+                </button>
+        
+            </div>
 
-        </div>
+            {openModal
+            ? 
+            <CreateAreaModal 
+                title={note.title}
+                content={note.content}
+                open = {openModal}
+                load = {load}
+                onClose = {() => {setOpenModal(false)}}
+                onAdd = {onAdd}
+            />
+            :
+            null
+            }
+            
+        </>
     )
 } 

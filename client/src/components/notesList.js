@@ -30,9 +30,18 @@ export const NotesList = ({auth}) => {
         } catch (e) {}
     }
 
+    const updateNote = async (updatedNote, id) => {
+        try {
+            await request("api/notes/updateNote", "put", {...updatedNote, id}, {
+                Authorization: `Bearer ${auth.token}`
+            })
+        fetchNotes()
+        } catch (e) {}
+    }
+
     const deleteNote = async (id) => {
         try {
-            await request("api/notes/deleteNotes", "delete", {id}, {
+            await request("api/notes/deleteNote", "delete", {id}, {
                 Authorization: `Bearer ${auth.token}`
             })
         fetchNotes()
@@ -96,6 +105,8 @@ export const NotesList = ({auth}) => {
                     title = {noteItem.title}
                     content = {noteItem.content}
                     onDelete = {deleteNote}
+                    onAdd = {addNote}
+                    onUpdate = {updateNote}
                     load = {loading}
                  />
             ))}

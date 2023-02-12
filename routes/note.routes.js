@@ -44,12 +44,40 @@ router.post(
 //router to delete notes
 
 router.delete(
-    '/deleteNotes',
+    '/deleteNote',
     auth,
     async (req, res) => {
     try {
         await Note.findByIdAndDelete(req.body.id)
         res.json({message: "note deleted"})
+    } catch (e) {
+        res.status(500).json({ message: " something went wrong on the server... " })
+    }
+})
+
+module.exports = router
+
+//router to update notes
+
+router.put(
+    '/updateNote',
+    auth,
+    async (req, res) => {
+    try {
+
+        const {title, content, id} = req.body
+
+        const currentNote = await Note.findById(id)
+        
+        if (!currentNote) {
+            return res.status(500).json({message: "Note doesn't exist"})
+        }
+
+        update = { title: title, content: content }
+
+        await currentNote.updateOne(update);
+
+        res.json({message: "Note updated"})
     } catch (e) {
         res.status(500).json({ message: " something went wrong on the server... " })
     }
