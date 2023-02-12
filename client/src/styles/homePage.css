@@ -1,0 +1,12 @@
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.notes-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}

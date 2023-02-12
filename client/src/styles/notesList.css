@@ -1,0 +1,73 @@
+.note {
+    position: relative;
+    min-height: 150px;
+    width: 200px;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: var(--fourth);
+    
+}
+
+.note .title-input {
+    margin-bottom: 1rem;
+}
+
+.note textarea {
+    border-radius: 10px;
+    min-height: 50%;
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    overflow-y: hidden;
+    border-width: 1px;
+}
+
+textarea:focus-within {
+    border-width: 2px;
+    border-color: var(--primary);
+    outline: none;
+}
+
+.note .title {
+    font-size: 1.2rem;
+    min-height: 35px;
+    margin-top: 0.5rem;
+    padding: 5px;
+    word-wrap: break-word;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: white;
+} 
+
+.note .content {
+    word-wrap: break-word;
+} 
+
+.note-action-button {
+    font-size: 1.5rem;
+    position: absolute;
+    float: right;
+    cursor: pointer;
+    right: -10px;
+    bottom: -10px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: orange;
+}
+
+.note-action-button:disabled {
+    animation: rotation 1s linear infinite;
+    border-color: gray;
+    color: gray
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
